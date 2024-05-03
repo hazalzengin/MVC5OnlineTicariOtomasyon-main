@@ -1,0 +1,66 @@
+﻿@using MVC5OnlineTicariOtomasyon.Models.Classes
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Index</h2>
+
+
+<table id="tbl1" class="table table-bordered">
+    <thead>
+        <tr>
+            <td> ID</td>
+            <td> Ürün</td>
+            <td> Cari</td>
+            <td> Personel</td>
+            <td> Adet</td>
+            <td>Fiyat</td>
+            <td>Toplam</td>
+            <td>Tarih</td>
+            <td>Güncelle</td>
+            <td>Detaylar</td>
+        </tr>
+    </thead>
+
+    @foreach (var u in Model)
+    {
+        <tr>
+            <td>@u.Satisid</td>
+            <td>@u.Urun.UrunAd</td>
+            <td>@u.Cari.CariAd @u.Cari.CariSoyad</td>
+            <td>@u.Personel.PersonelAd @u.Personel.PersonelSoyad</td>
+            <td>@u.Adet</td>
+            <td>@u.Fiyat</td>
+            <td>@u.ToplamTutar</td>
+            <td>@u.Tarih </td>
+
+
+            <td>  <a href="/Satis/SatisGetir/@u.Satisid" class="btn btn-warning ">Güncelle</a></td>
+            <td>  <a href="/Satis/SatisDetay/@u.Satisid" class="btn btn-default" style="background-color:lightcoral">Detaylar</a></td>
+
+
+        </tr>
+
+    }
+
+</table>
+<a href="/Satis/YeniSatis" class="btn btn-primary">  Yeni Satış Yap</a>
+<link href="~/Content/bootstrap.css" rel="stylesheet" />
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+
+<link href="https://cdn.datatables.net/1.10.15/css/dataTables.bootstrap.min.css" rel="stylesheet" />
+
+<link href="https://cdn.datatables.net/responsive/2.1.1/css/responsive.bootstrap.min.css" rel="stylesheet" />
+
+<script src="https://cdn.datatables.net/1.10.15/js/jquery.dataTables.min.js"></script>
+
+<script src="https://cdn.datatables.net/1.10.15/js/dataTables.bootstrap4.min.js "></script>
+
+<script>
+
+$('#tbl1').dataTable({});
+
+</script>

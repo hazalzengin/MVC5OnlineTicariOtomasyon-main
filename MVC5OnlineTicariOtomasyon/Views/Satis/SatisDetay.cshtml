@@ -1,0 +1,36 @@
+﻿@using MVC5OnlineTicariOtomasyon.Models.Classes
+@model List<SatisHareket>
+@{
+    ViewBag.Title = "SatisDetay";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+<h2>Satis Detayı</h2>
+
+<table class="table table-condensed">
+    <tr>
+        <th>Satış Id</th>
+        <th>Ürün</th>
+        <th>Cari</th>
+        <th>Personel</th>
+        <th>Fiyat</th>
+        <th>Adet</th>
+        <th>Toplam</th>
+        <th>Tarih</th>
+    </tr>
+    @foreach (var x in Model)
+    {
+        <tr>
+            <td>
+                @x.Satisid  
+            </td>
+            <td>@x.Urun.UrunAd</td>
+            <td>@x.Cari.CariAd @x.Cari.CariSoyad</td>
+            <td>@x.Personel.PersonelAd  @x.Personel.PersonelSoyad</td>
+            <td>@x.Fiyat</td>
+            <td>@x.Adet</td>
+            <td>@x.ToplamTutar</td>
+            <td>@x.Tarih</td>
+           </tr>
+    }
+</table>

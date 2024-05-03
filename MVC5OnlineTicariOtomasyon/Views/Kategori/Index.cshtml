@@ -1,0 +1,33 @@
+﻿@using MVC5OnlineTicariOtomasyon.Models.Classes;
+@model List<Kategori>
+
+@{
+    ViewBag.Title = "AdminLayout";
+    Layout = "~/Views/Shared/AdminLayout.cshtml";
+}
+
+
+<h2>Burası Kategori</h2>
+<table class="table table-bordered">
+
+    <tr>
+        <td> ID</td>
+        <td> Ürün</td>
+        <td> Sil</td>
+        <td> Güncelle</td>
+    </tr>
+    @foreach (var k in Model)
+    {
+<tr>
+    <td>@k.KategoriId</td>
+    <td>@k.KategoriAdi</td>
+
+    <td><a href="/Kategori/KategoriSil/@k.KategoriId" class="btn btn-danger">Sil</a></td>
+    <td><a href="/Kategori/KategoriGetir/@k.KategoriId" class="btn btn-success">Güncelle</a></td>
+</tr>
+
+        
+
+    }
+</table>
+<a href="/Kategori/KategoriEkle" class="btn btn-primary"> Kategori Ekle</a></a>
