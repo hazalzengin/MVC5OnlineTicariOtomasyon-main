@@ -4,9 +4,8 @@
     Layout = "~/Views/Shared/AdminLayout.cshtml";
 }
 
-<h2>PersonelGetir</h2>
 
-<h2>Cari Bilgisi Güncelle</h2>
+<h2>Personel  Bilgisi Güncelle</h2>
 
 <br />
 @using (Html.BeginForm("PersonelGuncelle", "Personel", FormMethod.Post))
@@ -28,6 +27,7 @@
     <br />
     @Html.LabelFor(x => x.Departman.Departmanid)
     @Html.DropDownListFor(x => x.Departmanid, (List<SelectListItem>)ViewBag.dgr1, new { @class = "form-control" })
+    <br />
 
     <button class="btn btn-default" style="background-color:yellowgreen">Güncelle</button>
     
