@@ -51,7 +51,7 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
 
         public ActionResult YeniSatis(SatisHareket s)
         {
-            s.Tarih = DateTime.Parse(DateTime.Now.ToString());
+            s.Tarih = DateTime.Parse(DateTime.Today.ToString());
             c.SatisHarekets.Add(s);
             c.SaveChanges();
             return RedirectToAction("Index");

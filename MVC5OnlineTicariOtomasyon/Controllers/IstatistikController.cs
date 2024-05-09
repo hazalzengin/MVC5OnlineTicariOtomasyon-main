@@ -44,12 +44,38 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
             var deger9 = (from x in c.Uruns.Where(x=>x.Durum==true) orderby x.Satisfiyat ascending select x.UrunAd).FirstOrDefault();
             ViewBag.d9 = deger9;
 
-            var deger10 = (from x in c.Uruns.Where(x => x.Durum == true) select x.UrunAd == "Buzdolabi").Count().ToString();
-            ViewBag.d10 = deger10;
+            var deger10 = c.Uruns
+                                .Where(x => x.Durum == true && x.UrunAd == "Buzdolabı")
+                                .Sum(x => x.Stok);
+
+            ViewBag.d10 = deger10.ToString();
+
+
+            var deger11= c.Uruns
+                                .Where(x => x.Durum == true && x.UrunAd == "Pc")
+                                .Sum(x => x.Stok);
+            ViewBag.d11 = deger11;
 
             var deger12 = (from x in c.Uruns.Where(x => x.Durum == true) orderby x.Satisfiyat ascending select x.Marka).FirstOrDefault();
             ViewBag.d12 = deger12;
-            return View();
+
+            var deger14 = c.SatisHarekets
+      .Where(x => x.ToplamTutar != null)
+      .Sum(x => x.ToplamTutar)
+      .ToString();
+            ViewBag.d14 = deger14;
+
+            DateTime today = DateTime.Today;
+            var deger15 = c.SatisHarekets.Count(x => x.Tarih == today).ToString();
+            ViewBag.d15 = deger15;
+
+            var deger16 = c.SatisHarekets.Where(x => x.Tarih == today).Sum(x=>x.ToplamTutar).ToString();
+            ViewBag.d16 = deger16;
+
+
+            var deger13 = c.Uruns.Where(u=>u.Urunid==(c.SatisHarekets.GroupBy(x => x.Urunid).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault())).Select(k=>k.UrunAd).FirstOrDefault();
+            ViewBag.d13 = deger13;
+            return View(); 
         }
     }
 }
