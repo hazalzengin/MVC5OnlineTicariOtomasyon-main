@@ -66,7 +66,7 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
             var urn = c.Uruns.Find(p.Urunid);
             urn.Alisfiyat = p.Alisfiyat;
             urn.Durum = p.Durum;
-            urn.Kategoriid = p.Kategoriid;
+            //urn.Kategoriid = p.Kategoriid;
             urn.Marka = p.Marka;
             urn.Satisfiyat = p.Satisfiyat;
             urn.Stok = p.Stok;

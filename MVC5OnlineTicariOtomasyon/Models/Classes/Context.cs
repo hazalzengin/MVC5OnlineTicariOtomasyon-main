@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Data.Entity;
+
+
 namespace MVC5OnlineTicariOtomasyon.Models.Classes
 {
 	public class Context:DbContext
@@ -17,5 +19,6 @@ namespace MVC5OnlineTicariOtomasyon.Models.Classes
 		public DbSet<Urun> Uruns { get; set; }
 		public DbSet<Personel> Personels { get; set; }
 		public DbSet<Gider> Giders { get; set; }
+		public DbSet<Detay> Detays { get; set; }
 	}
 }

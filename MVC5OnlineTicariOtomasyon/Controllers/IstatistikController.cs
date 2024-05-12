@@ -35,6 +35,7 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
             var deger7 = c.Uruns.Count(x => x.Stok <= 20).ToString();
             ViewBag.d7 = deger7;
 
+
             var deger8 = (from x in c.Uruns.Where(x => x.Durum == true) orderby x.Satisfiyat descending select x.UrunAd).FirstOrDefault();
             ViewBag.d8 = deger8;
 
@@ -64,18 +65,49 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
       .Sum(x => x.ToplamTutar)
       .ToString();
             ViewBag.d14 = deger14;
-
             DateTime today = DateTime.Today;
             var deger15 = c.SatisHarekets.Count(x => x.Tarih == today).ToString();
-            ViewBag.d15 = deger15;
+
+            if (deger15 == "0")
+            {
+                ViewBag.d15 = "Bugün hiç satış yapılmadı.";
+            }
+            else
+            {
+                ViewBag.d15 = deger15;
+            }
+
 
             var deger16 = c.SatisHarekets.Where(x => x.Tarih == today).Sum(x=>x.ToplamTutar).ToString();
             ViewBag.d16 = deger16;
 
+            if (deger16 == "0")
+            {
+                ViewBag.d16 = "Bugün hiç satış yapılmadı.";
+            }
+            else
+            {
+                ViewBag.d16 = deger16;
+            }
 
             var deger13 = c.Uruns.Where(u=>u.Urunid==(c.SatisHarekets.GroupBy(x => x.Urunid).OrderByDescending(z => z.Count()).Select(y => y.Key).FirstOrDefault())).Select(k=>k.UrunAd).FirstOrDefault();
             ViewBag.d13 = deger13;
             return View(); 
+        }
+
+        public ActionResult KolayTablo()
+        {
+            var sorgu = from x in c.Caris
+                        group x by x.CariSehir into g
+                        select new SinifGrup
+                        {
+                            sehir = g.Key,
+                            sayi = g.Count()
+                        };
+
+
+
+            return View(sorgu.ToList());
         }
     }
 }
