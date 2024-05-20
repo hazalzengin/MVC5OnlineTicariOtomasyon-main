@@ -1,0 +1,60 @@
+﻿@model IEnumerable<MVC5OnlineTicariOtomasyon.Models.Classes.Cari>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px 15px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h3 {
+        margin: 0;
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+        <h3>Cariler</h3>
+    </div>
+</div>
+
+<table>
+
+    <tr>
+        <th><h3>Cari Ad</h3></th>
+        <th><h3>Cari Soyad</h3></th>
+        <th><h3>Cari Şehir</h3></th>
+        <th><h3>Cari Mail</h3></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.CariAd</td>
+            <td>@item.CariSoyad</td>
+            <td>@item.CariSehir</td>
+            <td>@item.CariMail</td>
+        </tr>
+    }
+</table>

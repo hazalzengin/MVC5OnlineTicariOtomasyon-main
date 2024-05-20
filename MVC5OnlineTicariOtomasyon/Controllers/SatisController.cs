@@ -20,7 +20,7 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
         [HttpGet]
         public ActionResult YeniSatis()
         {
-            List<SelectListItem> deger1 = (from x in c.Uruns.ToList()
+            List<SelectListItem> deger1 = (from x in c.Uruns.Where(x => x.Durum == true).ToList()
                                            select new SelectListItem
                                            {
                                                Text = x.UrunAd,

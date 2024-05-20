@@ -78,10 +78,11 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
             }
 
 
-            var deger16 = c.SatisHarekets.Where(x => x.Tarih == today).Sum(x=>x.ToplamTutar).ToString();
+            var deger16 = c.SatisHarekets.Where(x => x.Tarih == today).Sum(x => (decimal?)x.ToplamTutar) ?? 0;
+            ViewBag.d16 = deger16.ToString();
             ViewBag.d16 = deger16;
 
-            if (deger16 == "0")
+            if (deger16 == 0)
             {
                 ViewBag.d16 = "Bugün hiç satış yapılmadı.";
             }
@@ -104,10 +105,31 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
                             sehir = g.Key,
                             sayi = g.Count()
                         };
-
-
-
             return View(sorgu.ToList());
+        }
+
+
+        public PartialViewResult Partial1()
+        {
+            var sorgu2 = from x in c.Personels
+                         group x by x.Departmanid into g
+                         select new SinifGrup2
+                         {
+                             Departman = g.Key,
+                             sayi = g.Count()
+                         };
+            return PartialView(sorgu2.ToList());
+        }
+        public PartialViewResult Partial2()
+        {
+            var sorgu3 = c.Caris.ToList();
+            return PartialView(sorgu3);
+
+        }
+        public PartialViewResult Partial3()
+        {
+            var sorgu = c.Uruns.Where(x => x.Durum == true).ToList();
+            return PartialView(sorgu);
         }
     }
 }

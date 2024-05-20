@@ -1,0 +1,56 @@
+﻿@model IEnumerable<MVC5OnlineTicariOtomasyon.Models.Classes.SinifGrup2>
+
+<style>
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin: 20px 0;
+        font-size: 18px;
+        text-align: left;
+    }
+
+    table, th, td {
+        border: 1px solid #ddd;
+    }
+
+    th, td {
+        padding: 12px 15px;
+    }
+
+    th {
+        background-color: #f2f2f2;
+        color: #333;
+    }
+
+    tr:nth-child(even) {
+        background-color: #f9f9f9;
+    }
+
+    tr:hover {
+        background-color: #f1f1f1;
+    }
+
+    h3 {
+        margin: 0;
+    }
+</style>
+<div class="card">
+    <div class="card-header">
+        <h3>Departman Personel Sayıları</h3>
+    </div>
+</div>
+
+<table>
+
+    <tr>
+        <th><h3>Departman</h3></th>
+        <th><h3>Adet</h3></th>
+    </tr>
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>@item.Departman</td>
+            <td>@item.sayi</td>
+        </tr>
+    }
+</table>
