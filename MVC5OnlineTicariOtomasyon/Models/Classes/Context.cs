@@ -20,5 +20,7 @@ namespace MVC5OnlineTicariOtomasyon.Models.Classes
 		public DbSet<Personel> Personels { get; set; }
 		public DbSet<Gider> Giders { get; set; }
 		public DbSet<Detay> Detays { get; set; }
+
+		public DbSet<ToDoList> toDoLists { get; set; }
 	}
 }

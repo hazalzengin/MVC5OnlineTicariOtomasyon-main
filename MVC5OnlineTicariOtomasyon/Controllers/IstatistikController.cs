@@ -112,7 +112,7 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
         public PartialViewResult Partial1()
         {
             var sorgu2 = from x in c.Personels
-                         group x by x.Departmanid into g
+                         group x by x.Departman.DepartmanAd into g
                          select new SinifGrup2
                          {
                              Departman = g.Key,
@@ -130,6 +130,18 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
         {
             var sorgu = c.Uruns.Where(x => x.Durum == true).ToList();
             return PartialView(sorgu);
+        }
+
+        public PartialViewResult Partial4()
+        {
+            var sorgu2 = from x in c.Uruns.Where(x=>x.Durum==true)
+                         group x by x.Marka into g
+                         select new SinifGrup4
+                         {
+                             marka = g.Key,
+                             sayi = g.Count()
+                         };
+            return PartialView(sorgu2.ToList());
         }
     }
 }

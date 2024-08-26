@@ -68,6 +68,12 @@ namespace MVC5OnlineTicariOtomasyon.Controllers
 
         }
 
+
+        public ActionResult PersonelListele()
+        {
+            return View();
+        }
+
     }
 
 }

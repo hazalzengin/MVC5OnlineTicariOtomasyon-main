@@ -1,4 +1,4 @@
-﻿@model IEnumerable<MVC5OnlineTicariOtomasyon.Models.Classes.Urun>
+﻿@model IEnumerable<MVC5OnlineTicariOtomasyon.Models.Classes.SinifGrup4>
 
 <style>
     table {
@@ -36,27 +36,22 @@
 </style>
 <div class="card">
     <div class="card-header">
-        <h3>Ürünler</h3>
+        <h3>Markalar</h3>
     </div>
 </div>
 
 <table>
 
     <tr>
-        <th><h3>Ürün Adı</h3></th>
+        <th><h3>Sayı</h3></th>
         <th><h3>Marka</h3></th>
-        <th><h3>Stok</h3></th>
-        <th><h3>Alış Fiyatı</h3></th>
-        <th><h3>Satış Fiyatı</h3></th>
     </tr>
     @foreach (var item in Model)
     {
         <tr>
-            <td>@item.UrunAd</td>
-            <td>@item.Marka</td>
-            <td>@item.Stok</td>
-            <td>@item.Alisfiyat</td>
-            <td>@item.Satisfiyat</td>
+            <td>@item.sayi</td>
+            <td>@item.marka</td>
+      
         </tr>
     }
 </table>
